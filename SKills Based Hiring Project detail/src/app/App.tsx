@@ -96,6 +96,8 @@ function Divider() {
 
 function MiniTV({ url, color }: { url: string; color: string }) {
   const [loadError, setLoadError] = useState(false);
+  const previewScale = 0.56;
+  const scaledSize = `${100 / previewScale}%`;
 
   return (
     <div className="flex flex-col items-center mb-12">
@@ -131,7 +133,7 @@ function MiniTV({ url, color }: { url: string; color: string }) {
         </div>
 
         <div style={{ background: '#28231e', borderRadius: '10px', padding: '7px', boxShadow: 'inset 0 3px 10px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.12)' }}>
-          <div style={{ borderRadius: '6px', overflow: 'hidden', height: '430px', position: 'relative', background: '#1c1a16' }}>
+          <div style={{ borderRadius: '6px', overflow: 'hidden', height: '500px', position: 'relative', background: '#1c1a16' }}>
             {loadError ? (
               <div className="flex h-full flex-col items-center justify-center gap-3 px-8 text-center" style={{ background: 'linear-gradient(135deg, #1c1a16, #2d2820)' }}>
                 <p style={{ fontFamily: Georgia, fontSize: '14px', color: '#c8c0b3', lineHeight: 1.7 }}>
@@ -146,9 +148,18 @@ function MiniTV({ url, color }: { url: string; color: string }) {
                 src={url}
                 title="NYU Metier live preview"
                 onError={() => setLoadError(true)}
+                loading="lazy"
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-modals"
                 allow="fullscreen"
-                style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+                style={{
+                  width: scaledSize,
+                  height: scaledSize,
+                  border: 'none',
+                  display: 'block',
+                  pointerEvents: 'none',
+                  transform: `scale(${previewScale})`,
+                  transformOrigin: 'top left',
+                }}
               />
             )}
             <div style={{ position: 'absolute', inset: 0, background: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)', pointerEvents: 'none', borderRadius: '6px' }} />
@@ -167,6 +178,18 @@ function MiniTV({ url, color }: { url: string; color: string }) {
       <div style={{ width: '88px', height: '11px', background: 'linear-gradient(to bottom, #ddd8cc, #ccc8be)', borderRadius: '0 0 5px 5px', border: '1.5px solid rgba(74,68,62,0.15)', borderTop: 'none' }} />
       <div style={{ width: '58px', height: '5px', background: '#c8c4bc', borderRadius: '0 0 4px 4px', border: '1px solid rgba(74,68,62,0.12)', borderTop: 'none' }} />
     </div>
+  );
+}
+
+function CaseSection({ id, children }: { id: string; children: ReactNode }) {
+  return (
+    <section
+      id={id}
+      className="mb-24 scroll-mt-24"
+      style={{ contentVisibility: 'auto', containIntrinsicSize: '900px' }}
+    >
+      {children}
+    </section>
   );
 }
 
@@ -230,7 +253,7 @@ function BeforeAfter({ redesignNum, title, beforeImg, afterImg }: {
               Before
             </span>
           </div>
-          <img src={beforeImg} alt="Before" className="w-full rounded-sm shadow-sm object-cover" />
+          <img loading="lazy" decoding="async" src={beforeImg} alt="Before" className="w-full rounded-sm shadow-sm object-cover" />
         </div>
 
         {/* Arrow */}
@@ -249,7 +272,7 @@ function BeforeAfter({ redesignNum, title, beforeImg, afterImg }: {
               After
             </span>
           </div>
-          <img src={afterImg} alt="After" className="w-full rounded-sm shadow-sm object-cover" />
+          <img loading="lazy" decoding="async" src={afterImg} alt="After" className="w-full rounded-sm shadow-sm object-cover" />
         </div>
       </div>
 
@@ -338,12 +361,12 @@ export default function App() {
 
             {/* Hero screenshot */}
             <div className="rounded-sm overflow-hidden shadow-md">
-              <img src={imgHeroScreenshot} alt="Platform screenshot" className="w-full object-cover" />
+              <img loading="lazy" decoding="async" src={imgHeroScreenshot} alt="Platform screenshot" className="w-full object-cover" />
             </div>
           </section>
 
           {/* ════════════ CH01 PROJECT OVERVIEW ════════════ */}
-          <section id="overview" className="mb-24 scroll-mt-24">
+          <CaseSection id="overview">
             <ChapterHeader number="01" title="Project Overview" />
 
             <div className="space-y-6">
@@ -359,10 +382,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH02 CHALLENGE ════════════ */}
-          <section id="challenge" className="mb-24 scroll-mt-24">
+          <CaseSection id="challenge">
             <ChapterHeader number="02" title="Challenge" />
 
             <div className="space-y-7">
@@ -406,10 +429,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH04 ANALYSIS ════════════ */}
-          <section id="analysis" className="mb-24 scroll-mt-24">
+          <CaseSection id="analysis">
             <ChapterHeader number="04" title="Analysis" />
 
             <div className="space-y-6">
@@ -419,7 +442,7 @@ export default function App() {
 
               {/* Inline analysis image (overview) */}
               <div>
-                <img src={imgImage11} alt="Affinity mapping / analysis" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgImage11} alt="Affinity mapping / analysis" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
 
               <BodyP>
@@ -432,24 +455,24 @@ export default function App() {
 
               {/* Data images side by side */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <img src={imgImage20} alt="Survey data chart" className="w-full rounded-sm shadow-sm object-cover" />
-                <img src={imgImage10} alt="Survey data chart" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgImage20} alt="Survey data chart" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgImage10} alt="Survey data chart" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
 
               <div>
-                <img src={imgImage2} alt="Analysis findings" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgImage2} alt="Analysis findings" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
 
               <div>
-                <img src={imgImage6} alt="Analysis framework" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgImage6} alt="Analysis framework" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH05 BUSINESS GOAL & DESIGN GOAL ════════════ */}
-          <section id="goals" className="mb-24 scroll-mt-24">
+          <CaseSection id="goals">
             <ChapterHeader number="05" title="Business Goal & Design Goal" />
 
             <div className="space-y-6">
@@ -459,10 +482,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH06 RESEARCH ════════════ */}
-          <section id="research" className="mb-24 scroll-mt-24">
+          <CaseSection id="research">
             <ChapterHeader number="06" title="Research" />
 
             <div className="space-y-6 mb-10">
@@ -474,22 +497,22 @@ export default function App() {
             {/* Persona images */}
             <div className="space-y-6">
               <div>
-                <img src={imgPersona1} alt="Persona 1" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgPersona1} alt="Persona 1" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
               <div>
-                <img src={imgPersona2} alt="Persona 2" className="w-full rounded-sm shadow-sm object-cover" />
+                <img loading="lazy" decoding="async" src={imgPersona2} alt="Persona 2" className="w-full rounded-sm shadow-sm object-cover" />
               </div>
               {/* Storyboard */}
               <div className="overflow-hidden rounded-sm shadow-sm">
-                <img src={imgStoryboard} alt="Storyboard" className="w-full object-cover" />
+                <img loading="lazy" decoding="async" src={imgStoryboard} alt="Storyboard" className="w-full object-cover" />
               </div>
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH07 SYNTHESIZE & IDEATION ════════════ */}
-          <section id="synthesize" className="mb-24 scroll-mt-24">
+          <CaseSection id="synthesize">
             <ChapterHeader number="07" title="Synthesize & Ideation" />
 
             <div className="space-y-6">
@@ -502,10 +525,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH08 HOW & DESIGN ════════════ */}
-          <section id="design" className="mb-24 scroll-mt-24">
+          <CaseSection id="design">
             <ChapterHeader number="08" title="How & Design" />
 
             <div className="space-y-6 mb-10">
@@ -515,7 +538,7 @@ export default function App() {
             </div>
 
             <div className="mb-8">
-              <img src={imgOnboarding} alt="Onboarding quiz screen" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgOnboarding} alt="Onboarding quiz screen" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             {/* Product flow */}
@@ -536,11 +559,11 @@ export default function App() {
 
             {/* Job feature screenshots */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-              <img src={imgJobFeature1} alt="Jobs feature" className="w-full rounded-sm shadow-sm object-cover" />
-              <img src={imgJobFeature2} alt="Jobs feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgJobFeature1} alt="Jobs feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgJobFeature2} alt="Jobs feature" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
             <div className="mb-10">
-              <img src={imgJobFeature3} alt="Jobs feature detail" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgJobFeature3} alt="Jobs feature detail" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             {/* Verified job board */}
@@ -550,12 +573,12 @@ export default function App() {
               </BodyP>
             </div>
             <div className="mb-10">
-              <img src={imgJobBoard} alt="Verified job board" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgJobBoard} alt="Verified job board" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-              <img src={imgCommunity1} alt="Job board detail" className="w-full rounded-sm shadow-sm object-cover" />
-              <img src={imgCommunity2} alt="Job board detail" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity1} alt="Job board detail" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity2} alt="Job board detail" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             {/* Community feature */}
@@ -565,10 +588,10 @@ export default function App() {
               </BodyP>
             </div>
             <div className="space-y-4 mb-10">
-              <img src={imgCommunity6} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
-              <img src={imgCommunity5} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
-              <img src={imgCommunity4} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
-              <img src={imgCommunity3} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity6} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity5} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity4} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgCommunity3} alt="Community feature" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             <div style={{ borderTop: '1px dashed rgba(29,26,22,0.12)', marginBottom: '32px' }} />
@@ -586,7 +609,7 @@ export default function App() {
 
             {/* Iteration overview image */}
             <div className="mb-12">
-              <img src={imgIterationOverview} alt="Iteration overview" className="w-full rounded-sm shadow-sm object-cover" />
+              <img loading="lazy" decoding="async" src={imgIterationOverview} alt="Iteration overview" className="w-full rounded-sm shadow-sm object-cover" />
             </div>
 
             <div style={{ borderTop: '1px dashed rgba(29,26,22,0.12)', marginBottom: '32px' }} />
@@ -618,7 +641,7 @@ export default function App() {
                   ]}
                 />
                 <div>
-                  <img src={imgIteration1} alt="Home page tutorial screenshot" className="w-full rounded-sm shadow-sm object-cover" />
+                  <img loading="lazy" decoding="async" src={imgIteration1} alt="Home page tutorial screenshot" className="w-full rounded-sm shadow-sm object-cover" />
                 </div>
               </div>
             </div>
@@ -654,7 +677,7 @@ export default function App() {
                   ]}
                 />
                 <div>
-                  <img src={imgIteration2} alt="Profile locating screenshot" className="w-full rounded-sm shadow-sm object-cover" />
+                  <img loading="lazy" decoding="async" src={imgIteration2} alt="Profile locating screenshot" className="w-full rounded-sm shadow-sm object-cover" />
                 </div>
               </div>
             </div>
@@ -690,7 +713,7 @@ export default function App() {
                   ]}
                 />
                 <div>
-                  <img src={imgIteration3} alt="Active challenges screenshot" className="w-full rounded-sm shadow-sm object-cover" />
+                  <img loading="lazy" decoding="async" src={imgIteration3} alt="Active challenges screenshot" className="w-full rounded-sm shadow-sm object-cover" />
                 </div>
               </div>
             </div>
@@ -728,10 +751,10 @@ export default function App() {
             />
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH09 REFLECTION & NEXT STEPS ════════════ */}
-          <section id="reflection" className="mb-24 scroll-mt-24">
+          <CaseSection id="reflection">
             <ChapterHeader number="09" title="Reflection & Next Steps" />
 
             <div className="space-y-6">
@@ -744,10 +767,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ CH10 IMPACT ════════════ */}
-          <section id="impact" className="mb-24 scroll-mt-24">
+          <CaseSection id="impact">
             <ChapterHeader number="10" title="Impact" />
 
             <div className="space-y-6 mb-10">
@@ -757,10 +780,10 @@ export default function App() {
             </div>
 
             <Divider />
-          </section>
+          </CaseSection>
 
           {/* ════════════ TEAM & CONTRIBUTION ════════════ */}
-          <section id="team" className="mb-24 scroll-mt-24">
+          <CaseSection id="team">
             <div className="mb-10">
               <h2 style={{ fontFamily: Caveat, fontSize: 'clamp(32px, 5vw, 44px)', fontWeight: 700, color: '#1c1a16', lineHeight: 1.15 }}>
                 Team &amp; My Contribution
@@ -775,10 +798,11 @@ export default function App() {
             </div>
 
             <div className="rounded-sm overflow-hidden shadow-sm">
-              <img src={imgImpact} alt="Impact overview" className="w-full object-cover" />
+              <img loading="lazy" decoding="async" src={imgImpact} alt="Impact overview" className="w-full object-cover" />
             </div>
-          </section>
-        </div>
+          </CaseSection>
+
+          </div>
       </main>
     </div>
   );
