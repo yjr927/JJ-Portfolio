@@ -156,7 +156,6 @@ function MiniTV({ url, color }: { url: string; color: string }) {
                   height: scaledSize,
                   border: 'none',
                   display: 'block',
-                  pointerEvents: 'none',
                   transform: `scale(${previewScale})`,
                   transformOrigin: 'top left',
                 }}
