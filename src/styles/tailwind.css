@@ -1,0 +1,5 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+@source '../../SKills Based Hiring Project detail/src/**/*.{js,ts,jsx,tsx}';
+
+@import 'tw-animate-css';
