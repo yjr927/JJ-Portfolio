@@ -95,7 +95,7 @@ function MiniDemo({ url }: { url?: string }) {
       <div
         style={{
           width: "100%",
-          maxWidth: "760px",
+          maxWidth: "1040px",
           padding: "14px 16px",
           borderRadius: "18px",
           border: "2px solid rgba(74,68,62,0.18)",
@@ -113,7 +113,7 @@ function MiniDemo({ url }: { url?: string }) {
           </a>
         </div>
         <div style={{ background: "#28231e", borderRadius: "10px", padding: "7px", boxShadow: "inset 0 3px 10px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.12)" }}>
-          <div style={{ height: "410px", overflow: "hidden", borderRadius: "6px", background: "#09090b", position: "relative" }}>
+          <div style={{ height: "520px", overflow: "hidden", borderRadius: "6px", background: "#09090b", position: "relative" }}>
             <iframe
               src={url}
               title="Web3 analytics live demo"
@@ -190,6 +190,31 @@ function CompetitiveCard({
   );
 }
 
+function CompetitiveBlock({
+  title,
+  problem,
+  insight,
+  opportunity,
+  figureSrc,
+  figureAlt,
+  figureCaption,
+}: {
+  title: string;
+  problem: string;
+  insight: string;
+  opportunity: string;
+  figureSrc: string;
+  figureAlt: string;
+  figureCaption: string;
+}) {
+  return (
+    <div className="space-y-4">
+      <CompetitiveCard title={title} problem={problem} insight={insight} opportunity={opportunity} />
+      <Figure src={figureSrc} alt={figureAlt} caption={figureCaption} />
+    </div>
+  );
+}
+
 function ChapterNav() {
   const rotations = [-2.3, 1.5, -1.2, 2, -1.8, 1.1];
 
@@ -241,7 +266,7 @@ export function Web3AnalyticsPage({ onBack, liveUrl }: { onBack: () => void; liv
       <ChapterNav />
 
       <main className="pt-[64px] lg:ml-[240px]">
-        <div className="mx-auto max-w-[820px] px-6 py-16 md:px-10 lg:px-14">
+        <div className="mx-auto max-w-[1120px] px-6 py-16 md:px-10 lg:px-14">
           <section className="mb-24">
             <p className="mb-3" style={{ fontFamily: Georgia, fontSize: "15px", color: accent }}>✦ Web3 Data Products · UI/UX Internship</p>
             <h1 className="mb-6" style={{ fontFamily: Caveat, fontSize: "clamp(48px, 7vw, 70px)", fontWeight: 700, color: "#1c1a16", lineHeight: 1.1 }}>
@@ -303,17 +328,43 @@ export function Web3AnalyticsPage({ onBack, liveUrl }: { onBack: () => void; liv
               <BodyP>
                 I compared major Web3 analytics products through a problem → insight → opportunity lens. Across all platforms, the pattern was consistent: they prioritize data access over user understanding.
               </BodyP>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <CompetitiveCard title="Dune" problem="Requires SQL and technical knowledge. Dashboards lack consistency." insight="The platform is optimized for data creation, not consumption." opportunity="Standardize dashboard structure, reduce technical barriers, and add an interpretation layer." />
-                <CompetitiveCard title="Etherscan" problem="Raw transaction-level data only, with no visualization or summarization." insight="High transparency, but little support for understanding patterns." opportunity="Introduce visual abstraction and transform raw logs into trends and insights." />
-                <CompetitiveCard title="Nansen" problem="Uses stock-market UI patterns and overemphasizes price metrics." insight="False familiarity can make users misinterpret Web3 dynamics." opportunity="Focus on wallet behavior and capital flow, clearly separating Web3 logic from traditional finance." />
-                <CompetitiveCard title="Glassnode" problem="Aggregated indicators can feel like a black box. The interface remains complex." insight="Strong at interpretation, but weaker in transparency and clarity." opportunity="Explain how metrics are derived and build a clear overview → detail narrative." />
-              </div>
-              <Figure src={duneMain} alt="Dune dashboard discovery page" caption="Dune: strong creation ecosystem, but discovery and consumption remain structurally heavy." />
+              <CompetitiveBlock
+                title="Dune"
+                problem="Requires SQL and technical knowledge. Dashboards lack consistency, so users often need to already know what they are looking for before they can learn from the data."
+                insight="The platform is optimized for data creation, not data consumption. Its ecosystem is powerful, but the experience assumes analyst fluency."
+                opportunity="Standardize dashboard structure, reduce technical barriers, and add an interpretation layer that helps users understand what the dashboard means before asking them to explore raw data."
+                figureSrc={duneMain}
+                figureAlt="Dune dashboard discovery page"
+                figureCaption="Dune: strong creation ecosystem, but discovery and consumption remain structurally heavy."
+              />
               <Figure src={duneData} alt="Dune data page" caption="Dune data page: powerful metrics, but high cognitive load for non-technical users." />
-              <Figure src={etherscan} alt="Etherscan homepage" caption="Etherscan: transparent transaction infrastructure, but raw logs do not become decision-ready insight." />
-              <Figure src={nansen} alt="Nansen homepage" caption="Nansen: trading-centered interface creates a different mental model from insight-first analysis." />
-              <Figure src={glassnode} alt="Glassnode dashboard" caption="Glassnode: interpretation exists, but the dense dashboard structure can still feel difficult to parse." />
+              <CompetitiveBlock
+                title="Etherscan"
+                problem="Shows raw transaction-level data with very limited visualization or summarization. It is transparent, but not explanatory."
+                insight="Etherscan is excellent for verification, but weak for pattern recognition. Users can inspect data, yet still struggle to understand what changed or why it matters."
+                opportunity="Introduce visual abstraction, surface trends from raw logs, and translate transaction detail into higher-level behavioral signals."
+                figureSrc={etherscan}
+                figureAlt="Etherscan homepage"
+                figureCaption="Etherscan: transparent transaction infrastructure, but raw logs do not become decision-ready insight."
+              />
+              <CompetitiveBlock
+                title="Nansen"
+                problem="Uses stock-market interface patterns and overemphasizes trading behavior and price-adjacent metrics."
+                insight="The familiar finance layout can create false confidence. Users may apply traditional-market assumptions to Web3 systems where wallet behavior, liquidity, and network activity work differently."
+                opportunity="Focus on wallet behavior and capital flow, clearly separating Web3 logic from traditional finance so users form the right mental model."
+                figureSrc={nansen}
+                figureAlt="Nansen homepage"
+                figureCaption="Nansen: trading-centered interface creates a different mental model from insight-first analysis."
+              />
+              <CompetitiveBlock
+                title="Glassnode"
+                problem="Provides stronger interpreted indicators, but aggregated metrics can feel like a black box and the page structure remains dense."
+                insight="Glassnode moves closer to insight, but users still need help understanding how metrics are derived and where to focus first."
+                opportunity="Explain metric logic, expose the reasoning behind indicators, and create a clearer overview-to-detail narrative flow."
+                figureSrc={glassnode}
+                figureAlt="Glassnode dashboard"
+                figureCaption="Glassnode: interpretation exists, but the dense dashboard structure can still feel difficult to parse."
+              />
             </div>
             <Divider />
           </CaseSection>

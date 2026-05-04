@@ -133,7 +133,7 @@ function MiniTV({ url, color }: { url: string; color: string }) {
         </div>
 
         <div style={{ background: '#28231e', borderRadius: '10px', padding: '7px', boxShadow: 'inset 0 3px 10px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.12)' }}>
-          <div style={{ borderRadius: '6px', overflow: 'hidden', height: '500px', position: 'relative', background: '#1c1a16' }}>
+          <div style={{ borderRadius: '6px', overflow: 'hidden', height: '520px', position: 'relative', background: '#1c1a16' }}>
             {loadError ? (
               <div className="flex h-full flex-col items-center justify-center gap-3 px-8 text-center" style={{ background: 'linear-gradient(135deg, #1c1a16, #2d2820)' }}>
                 <p style={{ fontFamily: Georgia, fontSize: '14px', color: '#c8c0b3', lineHeight: 1.7 }}>
@@ -308,7 +308,7 @@ export default function App() {
 
       {/* ── Main content ── */}
       <main className="pt-[64px] lg:ml-[240px]">
-        <div className="max-w-[820px] mx-auto px-6 md:px-10 lg:px-14 py-16">
+        <div className="max-w-[1120px] mx-auto px-6 md:px-10 lg:px-14 py-16">
 
           {/* ════════════ HERO ════════════ */}
           <section className="mb-24">

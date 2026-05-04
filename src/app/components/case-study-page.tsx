@@ -50,7 +50,7 @@ function MiniTV({ url, color }: { url: string; color: string }) {
           boxShadow:
             "0px 10px 36px rgba(28,26,23,0.13), inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 0 rgba(74,68,62,0.06)",
           width: "100%",
-          maxWidth: "740px",
+          maxWidth: "1040px",
           position: "relative",
         }}
       >
@@ -142,7 +142,7 @@ function MiniTV({ url, color }: { url: string; color: string }) {
             style={{
               borderRadius: "6px",
               overflow: "hidden",
-              height: "430px",
+              height: "520px",
               position: "relative",
               background: "#1c1a16",
             }}
@@ -491,7 +491,7 @@ export function CaseStudyPage({ project, onBack }: CaseStudyPageProps) {
       {/* ── Content ── */}
       <div
         className="relative z-10 px-8 md:px-16 lg:px-24 pt-24 pb-28 mx-auto"
-        style={{ maxWidth: "860px" }}
+        style={{ maxWidth: "1120px" }}
       >
         {/* ── HERO SECTION ── */}
 
@@ -521,7 +521,7 @@ export function CaseStudyPage({ project, onBack }: CaseStudyPageProps) {
           style={{
             fontSize: "17px",
             lineHeight: "1.9",
-            maxWidth: "708px",
+            maxWidth: "920px",
             marginBottom: "32px",
           }}
         >
@@ -616,7 +616,7 @@ export function CaseStudyPage({ project, onBack }: CaseStudyPageProps) {
               style={{
                 fontSize: "17px",
                 lineHeight: "1.9",
-                maxWidth: "708px",
+                maxWidth: "920px",
               }}
             >
               {chapter.content.split("\n\n").map((para, i) => (
