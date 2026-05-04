@@ -11,6 +11,8 @@ import catGif from "../imports/j2672_minimal_hand-drawn_blue_tabby_cat_character
 import selfPortrait from "../imports/j2672_httpss.mj.runS8Tcoj2kWyc_minimal_hand-drawn_female_char_25075b54-371e-41d1-a281-b6f4b2d8aa9c_3.png";
 import nyuMetierCover from "../imports/portfolio/nyu-metier-cover.png";
 import web3Cover from "../imports/portfolio/web3-cover.png";
+import driverGameCover from "../imports/portfolio/driver-game-cover.png";
+import witchTrialCover from "../imports/portfolio/witch-trial-cover.png";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const projects: Project[] = [
@@ -92,6 +94,7 @@ const projects: Project[] = [
     impact: "Policy + Market Reasoning",
     category: "gamification",
     liveUrl: "https://yjr927.github.io/Drivers-Game/",
+    coverImage: driverGameCover,
     chapters: [
       {
         number: "01",
@@ -144,6 +147,7 @@ const projects: Project[] = [
     impact: "Historical Empathy Through Perspective",
     category: "gamification",
     liveUrl: "https://yjr927.github.io/-Salem-Witch-Trials-Project-Final-Ver./",
+    coverImage: witchTrialCover,
     chapters: [
       {
         number: "01",
