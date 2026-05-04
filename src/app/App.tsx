@@ -5,9 +5,12 @@ import { ProjectCard } from "./components/project-card";
 import type { Project } from "./components/project-card";
 import { CaseStudyPage } from "./components/case-study-page";
 import { SkillsBasedHiringPage } from "./components/skills-based-hiring-page";
+import { Web3AnalyticsPage } from "./components/web3-analytics-page";
 import photo from "../imports/photo.png";
 import catGif from "../imports/j2672_minimal_hand-drawn_blue_tabby_cat_character_illustratio_be17ee9e-090d-4e6f-97da-e2e0e83fc8f4_0.gif";
 import selfPortrait from "../imports/j2672_httpss.mj.runS8Tcoj2kWyc_minimal_hand-drawn_female_char_25075b54-371e-41d1-a281-b6f4b2d8aa9c_3.png";
+import nyuMetierCover from "../imports/portfolio/nyu-metier-cover.png";
+import web3Cover from "../imports/portfolio/web3-cover.png";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const projects: Project[] = [
@@ -26,6 +29,7 @@ const projects: Project[] = [
     impact: "40% ↑ New Hire Retention",
     category: "uiux",
     liveUrl: "https://yjr927.github.io/NYU-Metier/",
+    coverImage: nyuMetierCover,
     detailType: "skillsBasedHiring",
     chapters: [
       {
@@ -43,41 +47,33 @@ const projects: Project[] = [
   },
   {
     id: "02",
-    shortName: "Data Narratives",
-    title: "Making Climate Data Feel Human",
+    shortName: "Web3 Analytics",
+    title: "Designing an Insight-First Web3 Analytics Dashboard",
     subtitle:
-      "Transforming dense environmental datasets into stories that move people from awareness to action.",
-    tags: ["Data Visualization", "Interaction Design"],
-    color: "#9fb5a0",
-    categoryLine: "Data Visualization · Interaction Design",
-    role: "UX Researcher & Designer",
-    timeline: "8 Weeks · 2024",
-    tools: "Figma · D3.js · Observable",
-    impact: "3× User Engagement",
+      "A decision-support dashboard that turns complex blockchain data into clear, structured, and actionable insights for emerging Web3 investors and product managers.",
+    tags: ["Web3", "Data UX"],
+    color: "#5fb7e6",
+    categoryLine: "Web3 Data Products · UI/UX Internship",
+    role: "Sole UI/UX Designer",
+    timeline: "4 Weeks · 2026",
+    tools: "Figma · Claude · Codex",
+    impact: "Data Display → Decision Support",
     category: "uiux",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
+    coverImage: web3Cover,
+    detailType: "web3Analytics",
+    liveUrl: "",
     chapters: [
       {
         number: "01",
-        title: "The Problem",
+        title: "Context",
         content:
-          "Climate data is abundant, rigorously collected, and almost completely inaccessible to the people who need to act on it. Charts full of anomalies and projections leave most users feeling powerless rather than informed.\n\nOur challenge was not a data problem — it was a storytelling problem.",
-        quote: {
-          text: "The graphs show something is wrong, but I don't know what I'm supposed to do about it.",
-          attribution: "User Interview, Session 4",
-        },
+          "This project was completed during a 4-week UI/UX internship focused on Web3 data products.",
       },
       {
         number: "02",
-        title: "The Research",
+        title: "Design Strategy",
         content:
-          "We ran co-design workshops with environmental educators, policy communicators, and everyday citizens to understand what \"understanding\" actually felt like — and where visualizations lost people.\n\nThe insight: people needed local anchoring, human scale, and a clear path from emotion to action.",
-      },
-      {
-        number: "03",
-        title: "The Design",
-        content:
-          "We redesigned the data experience around three modes: Feel (emotional entry through personal and local data), Understand (guided exploration with layered context), and Act (concrete, specific next steps tied to the data).\n\nAnimated transitions and ambient data representation replaced static charts.",
+          "The dashboard reframes blockchain analytics from data display into decision support.",
       },
     ],
   },
@@ -368,6 +364,10 @@ export default function App() {
   if (view === "case-study" && selectedProject) {
     if (selectedProject.detailType === "skillsBasedHiring") {
       return <SkillsBasedHiringPage onBack={goBack} />;
+    }
+
+    if (selectedProject.detailType === "web3Analytics") {
+      return <Web3AnalyticsPage onBack={goBack} />;
     }
 
     return <CaseStudyPage project={selectedProject} onBack={goBack} />;

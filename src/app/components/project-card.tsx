@@ -15,7 +15,8 @@ export interface Project {
   chapters: Chapter[];
   category: "uiux" | "gamification";
   liveUrl?: string; // GitHub Pages or any live URL — shows the mini TV in the case study
-  detailType?: "skillsBasedHiring";
+  coverImage?: string;
+  detailType?: "skillsBasedHiring" | "web3Analytics";
 }
 
 export interface Chapter {
@@ -113,7 +114,17 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             whileHover={{ scale: 1.06 }}
             transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ backgroundColor: "#ddd8cc" }}
-          />
+          >
+            {project.coverImage && (
+              <img
+                src={project.coverImage}
+                alt={`${project.title} cover`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            )}
+          </motion.div>
 
           {/* Color wash overlay */}
           <motion.div
@@ -127,7 +138,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
           {/* Short name label */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.span
-              className="font-['Caveat',cursive] font-normal text-[#4a443e] px-4 py-1.5 rounded-[2px] border border-[rgba(74,68,62,0.3)] bg-[rgba(248,247,244,0.7)]"
+              className="font-['Caveat',cursive] font-normal text-[#4a443e] px-4 py-1.5 rounded-[2px] border border-[rgba(74,68,62,0.3)] bg-[rgba(248,247,244,0.78)]"
               style={{ fontSize: "16px", lineHeight: "normal" }}
               initial={{ opacity: 0.75 }}
               whileHover={{ opacity: 1 }}
