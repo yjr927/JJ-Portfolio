@@ -81,6 +81,72 @@ function InfoCard({ label, value }: { label: string; value: string }) {
   );
 }
 
+function MiniDemo({ url }: { url?: string }) {
+  if (!url) return null;
+
+  const previewScale = 0.56;
+
+  return (
+    <div className="mb-12 flex flex-col items-center">
+      <div className="flex items-end justify-center" style={{ gap: "54px", height: "42px", marginBottom: "-3px" }}>
+        <div style={{ width: "3px", height: "38px", background: "linear-gradient(to top, #8a837b, #4a443e)", transform: "rotate(-15deg)", transformOrigin: "bottom center", borderRadius: "2px" }} />
+        <div style={{ width: "3px", height: "38px", background: "linear-gradient(to top, #8a837b, #4a443e)", transform: "rotate(15deg)", transformOrigin: "bottom center", borderRadius: "2px" }} />
+      </div>
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "760px",
+          padding: "14px 16px",
+          borderRadius: "18px",
+          border: "2px solid rgba(74,68,62,0.18)",
+          background: "linear-gradient(160deg, #f5f0e6 0%, #ede8db 100%)",
+          boxShadow: "0px 10px 36px rgba(28,26,23,0.13), inset 0 1px 0 rgba(255,255,255,0.7)",
+        }}
+      >
+        <div className="mb-2 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span style={{ width: "9px", height: "9px", borderRadius: "50%", backgroundColor: accent, display: "inline-block" }} />
+            <span style={{ fontFamily: Caveat, fontSize: "14px", color: "#8a837b", letterSpacing: "0.12em" }}>LIVE DEMO</span>
+          </div>
+          <a href={url} target="_blank" rel="noopener noreferrer" style={{ fontFamily: Georgia, fontSize: "12px", color: accent, textDecoration: "none" }}>
+            open in new tab ↗
+          </a>
+        </div>
+        <div style={{ background: "#28231e", borderRadius: "10px", padding: "7px", boxShadow: "inset 0 3px 10px rgba(0,0,0,0.45), 0 2px 6px rgba(0,0,0,0.12)" }}>
+          <div style={{ height: "410px", overflow: "hidden", borderRadius: "6px", background: "#09090b", position: "relative" }}>
+            <iframe
+              src={url}
+              title="Web3 analytics live demo"
+              loading="lazy"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-modals"
+              allow="fullscreen"
+              style={{
+                width: `${100 / previewScale}%`,
+                height: `${100 / previewScale}%`,
+                border: "none",
+                display: "block",
+                transform: `scale(${previewScale})`,
+                transformOrigin: "top left",
+                background: "#09090b",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                pointerEvents: "none",
+                background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.025) 2px, rgba(0,0,0,0.025) 4px)",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <div style={{ width: "88px", height: "11px", background: "linear-gradient(to bottom, #ddd8cc, #ccc8be)", borderRadius: "0 0 5px 5px", border: "1.5px solid rgba(74,68,62,0.15)", borderTop: "none" }} />
+      <div style={{ width: "58px", height: "5px", background: "#c8c4bc", borderRadius: "0 0 4px 4px", border: "1px solid rgba(74,68,62,0.12)", borderTop: "none" }} />
+    </div>
+  );
+}
+
 function InsightBox({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="rounded-[3px] bg-white p-5 shadow-sm" style={{ border: "1px solid rgba(29,26,22,0.08)" }}>
@@ -161,7 +227,7 @@ function ChapterNav() {
   );
 }
 
-export function Web3AnalyticsPage({ onBack }: { onBack: () => void }) {
+export function Web3AnalyticsPage({ onBack, liveUrl }: { onBack: () => void; liveUrl?: string }) {
   return (
     <div className="min-h-screen bg-[#ede8dc]" style={{ scrollBehavior: "smooth" }}>
       <header
@@ -195,6 +261,7 @@ export function Web3AnalyticsPage({ onBack }: { onBack: () => void }) {
               <InfoCard label="tools" value="Figma · Claude · Codex" />
               <InfoCard label="impact" value="Data display → decision support" />
             </div>
+            <MiniDemo url={liveUrl} />
             <Figure src={web3Cover} alt="Web3 analytics dashboard cover" caption="Final dashboard direction: an insight-first Web3 analytics system." />
           </section>
 

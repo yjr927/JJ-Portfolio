@@ -61,7 +61,7 @@ const projects: Project[] = [
     category: "uiux",
     coverImage: web3Cover,
     detailType: "web3Analytics",
-    liveUrl: "",
+    liveUrl: "https://yjr927.github.io/web3-analytics-dashboard-design/",
     chapters: [
       {
         number: "01",
@@ -78,230 +78,112 @@ const projects: Project[] = [
     ],
   },
   {
-    id: "03",
-    shortName: "Access for All",
-    title: "Accessibility Audit & Redesign",
-    subtitle:
-      "A comprehensive WCAG 2.1 AA audit turned into a system-wide design transformation for a healthcare platform.",
-    tags: ["Inclusive Design", "Research"],
-    color: "#d9c8b0",
-    categoryLine: "Inclusive Design · Research",
-    role: "Accessibility Lead",
-    timeline: "6 Weeks · 2023",
-    tools: "Figma · axe · WAVE",
-    impact: "64 Issues Resolved",
-    category: "uiux",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
-    chapters: [
-      {
-        number: "01",
-        title: "The Problem",
-        content:
-          "The platform had grown quickly through acquisition and feature addition, leaving behind a patchwork of components with inconsistent contrast, focus states, and screen reader support.\n\nFor users with visual or motor disabilities, certain core workflows were simply unusable. This wasn't edge-case territory — it was a daily reality for a significant portion of the user base.",
-      },
-      {
-        number: "02",
-        title: "The Audit",
-        content:
-          "We combined automated scanning (axe, WAVE) with manual keyboard navigation testing and sessions with assistive technology users. The audit surfaced 64 distinct issues across 3 severity levels.\n\nCritical failures included: form fields without labels, interactive elements unreachable by keyboard, and color contrast ratios as low as 2.1:1.",
-      },
-    ],
-  },
-  {
-    id: "04",
-    shortName: "Flow State",
-    title: "Mobile Wayfinding Reimagined",
-    subtitle:
-      "Redesigning indoor navigation for a large campus environment through a mobile-first, context-aware experience.",
-    tags: ["UX Strategy", "Prototyping"],
-    color: "#8a837b",
-    categoryLine: "UX Strategy · Prototyping",
-    role: "Lead UX Designer",
-    timeline: "10 Weeks · 2023",
-    tools: "Figma · Principle · Swift UI",
-    impact: "34% ↓ Navigation Time",
-    category: "uiux",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
-    chapters: [
-      {
-        number: "01",
-        title: "The Problem",
-        content:
-          "Large campus environments — hospitals, universities, conference centers — present a unique wayfinding challenge. Static signage can't update, digital kiosks require stopping, and generic map apps don't account for indoor context.\n\nUsers were arriving late to appointments, missing events, and experiencing real anxiety about navigating unfamiliar spaces.",
-        quote: {
-          text: "I walked past the right corridor three times before someone stopped to help me.",
-          attribution: "User Interview, Hospital Context",
-        },
-      },
-      {
-        number: "02",
-        title: "The Design",
-        content:
-          "We designed a context-aware navigation system that adapted its interface to the user's current situation: arrival mode, active navigation, and discovery browsing each had distinct UI states and information hierarchies.\n\nAugmented reality overlays were prototyped for key decision points, reducing cognitive load at the moments that mattered most.",
-      },
-    ],
-  },
-  {
     id: "05",
-    shortName: "Level Up",
-    title: "Gamified LMS Dashboard Redesign",
+    shortName: "Driver's Game",
+    title: "Ride Share Sandbox: A Policy & Market Game",
     subtitle:
-      "Reimagining a corporate learning platform through XP systems, streaks, and progress rituals that make training feel like play.",
-    tags: ["Gamification", "UX Design"],
+      "A web-based simulation where players act as New York City rideshare drivers, responding to policy news, market shifts, platform incentives, and resource constraints.",
+    tags: ["Game for Learning", "Economics"],
     color: "#7b9ab5",
-    categoryLine: "Gamification · UX Design",
-    role: "Lead UX Designer",
-    timeline: "10 Weeks · 2024",
-    tools: "Figma · Maze · Notion",
-    impact: "52% ↑ Course Completion",
+    categoryLine: "Game for Learning · Economics Simulation",
+    role: "Learning Game Designer",
+    timeline: "Final Report · 2026",
+    tools: "Simulation Design · Learning Theory · Prototype",
+    impact: "Policy + Market Reasoning",
     category: "gamification",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
+    liveUrl: "https://yjr927.github.io/Drivers-Game/",
     chapters: [
       {
         number: "01",
-        title: "The Problem",
+        title: "Project Overview",
         content:
-          "Employees dreaded opening the LMS. Completion rates hovered below 30%, and qualitative feedback pointed to the same culprit: the platform felt like a chore, not an opportunity.\n\nOur challenge was to redesign the experience so that progress felt visible, effort felt rewarded, and learning felt like something people chose — not something done to them.",
+          "Ride Share Sandbox is a web-based learning simulation where players act as rideshare drivers operating in New York City. The market changes dynamically through news updates, policy alerts, platform incentives, fuel costs, passenger demand, and unexpected events.\n\nInstead of teaching economics through formulas first, the game places players inside a changing system. They learn by making decisions, watching outcomes, and connecting their choices to concepts like supply, demand, opportunity cost, externalities, and market constraints.",
         quote: {
-          text: "I only open it when HR sends a reminder. It just feels like a checkbox.",
-          attribution: "Employee, Mid-year Survey",
+          text: "Ride Share Sandbox creates an environment in which participants learn from experience by making connections between their actions and the result.",
+          attribution: "Final Report",
         },
       },
       {
         number: "02",
-        title: "The Design",
+        title: "Learning Goals",
         content:
-          "We introduced a lightweight XP and leveling system, weekly streak mechanics, and a personalized progress dashboard that surfaced momentum rather than gaps.\n\nCritically, every game element was tied to a real learning behavior — no hollow badges for logging in. The redesign was validated through moderated usability testing with 24 participants across three departments.",
+          "The game is designed to help players understand how supply and demand affect markets and prices, how external factors influence economic systems, how strategic decisions happen under restriction and uncertainty, and how players balance short-term gains against efficient resource management.\n\nUsing Bloom's Taxonomy, the learning path moves from understanding policies, to applying heat maps and news signals, to analyzing platform differences, and finally evaluating whether a route or platform choice was worth the opportunity cost.",
       },
       {
         number: "03",
-        title: "The Outcomes",
+        title: "Core Game Loop",
         content:
-          "Course completion rates rose from 28% to 52% within two quarters. Time-on-platform increased by 38%, and peer-to-peer learning nominations saw 600+ submissions in the first month.\n\nThe design framework was adopted as the foundation for the platform's next-generation redesign.",
-        quote: {
-          text: "I actually check my streak before I open my email now. That's wild.",
-          attribution: "Participant, Follow-up Interview",
-        },
+          "Each round begins with a market briefing. Players read concise news, trends, and hints about the day's conditions, then enter the driving stage on a grid-based map. Every movement costs time and fuel, so players must decide whether to explore for better opportunities or act efficiently.\n\nPlayers also choose between platforms such as Uber, Lyft, and Taxi. Each platform has its own incentives and limitations, turning platform choice into an economic strategy rather than a cosmetic option.",
+      },
+      {
+        number: "04",
+        title: "Decision Pressure",
+        content:
+          "The task-trigger system gives players a concrete daily goal, such as completing a set number of passenger requests. Success is not just maximizing revenue. Players need to respond to changing conditions while managing limited time, fuel, and platform constraints.\n\nUnexpected events like passenger cancellations, congestion, policy changes, or rainy-day surcharges create uncertainty. These events turn abstract economic ideas into felt friction inside the game.",
+      },
+      {
+        number: "05",
+        title: "Reflection & Evaluation",
+        content:
+          "After the driving stage, players receive a report showing earnings, rank, and feedback. The reflection stage asks them to revisit earlier choices in light of the signals they saw and the outcomes they produced.\n\nThis closes the learning loop: players can ask whether poor income came from policy conditions, inefficient route planning, platform choice, or resource management. The game uses experiential learning, self-determination theory, and flow theory to make economic reasoning active, adaptive, and memorable.",
       },
     ],
   },
   {
     id: "06",
-    shortName: "Quest Mode",
-    title: "Narrative Learning Game for Middle School",
+    shortName: "Salem Witch Trials",
+    title: "Women, Power, and Fear: The Salem Witch Trials",
     subtitle:
-      "Designing a story-driven history game where every choice reflects a real historical decision — and every outcome teaches something true.",
-    tags: ["Game Design", "Learning Design"],
+      "An interactive narrative website game exploring how gender, power, fear, and public judgment shaped one of history's most haunting injustices.",
+    tags: ["Narrative Game", "History"],
     color: "#9b7bb5",
-    categoryLine: "Game Design · Learning Design",
-    role: "UX & Learning Designer",
-    timeline: "14 Weeks · 2023",
-    tools: "Figma · Twine · Miro",
-    impact: "89% Knowledge Retention",
+    categoryLine: "Interactive Storytelling · History Education",
+    role: "Narrative Learning Designer",
+    timeline: "2026",
+    tools: "Interactive Website · Narrative Design",
+    impact: "Historical Empathy Through Perspective",
     category: "gamification",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
+    liveUrl: "https://yjr927.github.io/-Salem-Witch-Trials-Project-Final-Ver./",
     chapters: [
       {
         number: "01",
-        title: "The Problem",
+        title: "Context",
         content:
-          "History curricula consistently rank among students' least engaging subjects. Rote memorization of dates and events leaves little room for curiosity, empathy, or genuine understanding of causality.\n\nThe project brief: design a game experience that teaches 8th-grade US history content — without feeling like a lesson.",
-        quote: {
-          text: "History is just memorizing things that already happened. Why does it matter what I think?",
-          attribution: "Student, Focus Group",
-        },
+          "Women, Power, and Fear is an interactive narrative website game about the Salem Witch Trials. The project explores the relationship between women, power, and fear through a historical event where accusation, rumor, and authority turned into real violence.\n\nThe experience is designed for high school and college students studying history, gender, social justice, and historical empathy.",
       },
       {
         number: "02",
-        title: "The Design",
+        title: "Learning Goals",
         content:
-          "We built a branching narrative engine where students inhabit historical figures at key decision points. Choices aren't right or wrong — they're consequential. Each path surfaces primary sources, exposes tradeoffs, and ends with a reflection prompt.\n\nThe interface was designed to feel like a graphic novel, not a textbook.",
+          "The project teaches students to understand the events and timeline of the Salem Witch Trials, recognize gendered patterns in accusation, analyze how power structures shape justice, and connect historical fear-based systems to modern examples.\n\nRather than presenting Salem as a distant tragedy, the design asks students to notice how social pressure, institutional authority, and public judgment still operate today.",
       },
       {
         number: "03",
-        title: "The Outcomes",
+        title: "Interaction Model",
         content:
-          "Pre/post assessments showed 89% knowledge retention rates — 2.1× higher than the traditional lecture group. More significantly, students who played the game demonstrated stronger causal reasoning in open-ended essay responses.\n\nThe game was piloted across 6 classrooms in two school districts.",
-      },
-    ],
-  },
-  {
-    id: "07",
-    shortName: "Badge System",
-    title: "Achievement Framework for Corporate Training",
-    subtitle:
-      "Designing a meaningful, equity-aware badge and recognition system that motivates without excluding.",
-    tags: ["Gamification", "Research"],
-    color: "#7bb59b",
-    categoryLine: "Gamification · Research",
-    role: "UX Researcher & Systems Designer",
-    timeline: "8 Weeks · 2024",
-    tools: "Figma · Airtable · Dovetail",
-    impact: "3× Peer Recognition Rate",
-    category: "gamification",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
-    chapters: [
-      {
-        number: "01",
-        title: "The Problem",
-        content:
-          "The existing badge system was purely completion-based: finish a course, earn a badge. Research revealed it was actively demotivating for employees who couldn't access certain training due to scheduling constraints, language barriers, or role restrictions.\n\nA recognition system designed without equity considerations had quietly become a source of frustration.",
+          "The core gameplay is built around four actions: read an accusation, hear testimonies, switch perspectives, and make a decision. Players move through branching choices, text-based consequences, emotional feedback, and perspective shifts.\n\nThe interaction model makes students active participants instead of passive readers. They must make decisions under incomplete information, social pressure, and emotional discomfort.",
       },
       {
-        number: "02",
-        title: "The Research",
+        number: "04",
+        title: "Narrative Design",
         content:
-          "We conducted 22 interviews across five global offices and ran a card-sorting exercise with 60 participants to understand what kinds of recognition felt meaningful versus performative.\n\nThe core finding: people wanted to be seen for how they contributed, not just what they completed.",
+          "The story uses multiple roles to reveal different kinds of power. The Court Clerk represents institutional authority. The Accused Woman represents fear, isolation, and powerlessness. The Jury represents public judgment and social bias.\n\nBy switching perspectives, students see that history is not a single clean story. It is made of competing voices, unequal risks, and decisions shaped by systems.",
+      },
+      {
+        number: "05",
+        title: "Why Salem Matters",
+        content:
+          "More than 200 people were accused during the Salem Witch Trials, and 19 were executed. The project frames this not as an isolated anomaly, but as a pattern shaped by gender, property, social disruption, and fear.\n\nWomen, especially those who lived alone, owned property, or defied expectations, were especially vulnerable to accusation.",
         quote: {
-          text: "Badges feel like they were designed for the people who were already winning.",
-          attribution: "Participant, Interview Round 2",
+          text: "History is perspective. Fear is a tool. Injustice is not inevitable.",
+          attribution: "Final Presentation",
         },
       },
       {
-        number: "03",
-        title: "The Design",
+        number: "06",
+        title: "Design Philosophy",
         content:
-          "We introduced three badge tiers — skill-based, contribution-based, and peer-nominated — with clear, transparent criteria for each. A new peer recognition flow let anyone nominate a colleague directly from the learning feed.\n\nAll badges were co-designed with employee resource groups to ensure cultural relevance.",
-      },
-    ],
-  },
-  {
-    id: "08",
-    shortName: "Play Lab",
-    title: "Playful Science Exploration App",
-    subtitle:
-      "A mobile-first interactive science app for ages 8–12, designed around curiosity, experimentation, and joyful failure.",
-    tags: ["Game UX", "Prototyping"],
-    color: "#b5a07b",
-    categoryLine: "Game UX · Prototyping",
-    role: "Lead UX Designer",
-    timeline: "12 Weeks · 2023",
-    tools: "Figma · ProtoPie · Unity (consult)",
-    impact: "4.8★ App Store Rating",
-    category: "gamification",
-    liveUrl: "", // ← paste this project's GitHub Pages URL here
-    chapters: [
-      {
-        number: "01",
-        title: "The Problem",
-        content:
-          "Most educational apps for children prioritize content delivery over genuine exploration. They're digital textbooks with a coat of paint — and kids see right through it.\n\nOur brief was to design an experience where the process of discovery was the product: an app where getting things wrong was as delightful as getting them right.",
-        quote: {
-          text: "I want to try stuff. I don't want to be told what to do.",
-          attribution: "Child Participant, Age 9, Playtesting Session",
-        },
-      },
-      {
-        number: "02",
-        title: "The Design",
-        content:
-          "We designed a sandbox 'lab' environment where kids could mix, build, and test virtual experiments. Every interaction had exaggerated, immediate feedback — sparks, splashes, explosions — that made failure entertaining.\n\nProgress was tracked through a personal 'discovery journal' that children could personalize and share, transforming learning into a creative artifact.",
-      },
-      {
-        number: "03",
-        title: "The Outcomes",
-        content:
-          "The app launched with a 4.8★ App Store rating and was featured in Apple's 'Apps We Love' collection. Average session length was 22 minutes — 3× the category benchmark.\n\nA follow-up study with 120 children showed significant increases in self-reported curiosity and science confidence after four weeks of use.",
+          "The design is guided by empathy through embodiment, ambiguity over easy answers, emotional resonance as pedagogy, and multiple truths within one history.\n\nThe goal is not to make students comfortable. The goal is to use discomfort carefully, so students can think critically about how fear becomes power and how justice can fail when systems reward accusation over truth.",
       },
     ],
   },
@@ -367,7 +249,7 @@ export default function App() {
     }
 
     if (selectedProject.detailType === "web3Analytics") {
-      return <Web3AnalyticsPage onBack={goBack} />;
+      return <Web3AnalyticsPage onBack={goBack} liveUrl={selectedProject.liveUrl} />;
     }
 
     return <CaseStudyPage project={selectedProject} onBack={goBack} />;

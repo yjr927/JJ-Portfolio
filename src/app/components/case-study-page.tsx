@@ -9,6 +9,7 @@ interface CaseStudyPageProps {
 // ── Mini TV ────────────────────────────────────────────────────────────────────
 function MiniTV({ url, color }: { url: string; color: string }) {
   const [loadError, setLoadError] = useState(false);
+  const previewScale = 0.56;
 
   return (
     <div className="flex flex-col items-center mb-14">
@@ -197,12 +198,15 @@ function MiniTV({ url, color }: { url: string; color: string }) {
               <iframe
                 src={url}
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: `${100 / previewScale}%`,
+                  height: `${100 / previewScale}%`,
                   border: "none",
                   display: "block",
+                  transform: `scale(${previewScale})`,
+                  transformOrigin: "top left",
                 }}
                 title="Live Preview"
+                loading="lazy"
                 onError={() => setLoadError(true)}
                 sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-modals"
                 allow="fullscreen"
